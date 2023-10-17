@@ -1,0 +1,279 @@
+
+Practical no 7 
+Creating a smart contract on the Ethereum blockchain using Remix
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    uint256 public storedData;
+
+    constructor() {
+        storedData = 0;
+    }
+
+    function set(uint256 newValue) public {
+        storedData = newValue;
+    }
+
+    function get() public view returns (uint256) {
+        return storedData;
+    }
+}
+
+
+
+Explanation of each line of code:
+
+--> // SPDX-License-Identifier: MIT: A comment specifying the license under which the code is released (MIT License).
+
+--> pragma solidity ^0.8.0;: Specifies the Solidity compiler version, indicating compatibility up to version 0.8.0.
+
+--> contract SimpleStorage {: This line defines the start of the SimpleStorage contract.
+
+--> uint256 public storedData;: Declares a public state variable called storedData, which will store an unsigned integer value. The public modifier generates a getter function automatically.
+
+--> constructor() {: This line defines the constructor function, which is executed only once when the contract is deployed.
+
+--> storedData = 0;: Inside the constructor, we set the initial value of storedData to 0. This is the default value when the contract is deployed.
+
+
+
+Practical Number 8:
+Creating a variable on the blockchain using Solidity and deploying it as contract on the Ethereum blockchain using Remix
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    uint256 public myVariable;
+
+    constructor() {
+        myVariable = 42;
+    }
+}
+
+
+Explanation of each line of code:
+
+--> // SPDX-License-Identifier: MIT: This is a comment specifying the license under which the code is released (MIT License).
+
+--> pragma solidity ^0.8.0;: This line specifies the Solidity compiler version. In this case, it indicates compatibility with compiler versions up to 0.8.0.
+
+--> contract SimpleStorage {: This line marks the beginning of the SimpleStorage smart contract.
+
+--> uint256 public myVariable;: This line declares a public state variable named myVariable of type uint256. Public state variables automatically generate a getter function to access their values from outside the contract.
+
+--> constructor() {: Here, we define the constructor function. The constructor is a special function that is executed only once when the contract is deployed.
+
+--> myVariable = 42;: Inside the constructor, we set the initial value of myVariable to 42. This value will be assigned to myVariable when the contract is deployed.
+
+
+
+
+Practical Number 9:
+Creating an array on the blockchain using Solidity and deploying it as contract on the Ethereum blockchain using Remix
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract ArrayExample {
+    uint256[] public myArray;
+
+    constructor() {
+        myArray.push(42);
+    }
+
+    function addValue(uint256 _value) public {
+        myArray.push(_value);
+    }
+
+    function getArrayLength() public view returns (uint256) {
+        return myArray.length;
+    }
+
+    function getValueAtIndex(uint256 index) public view returns (uint256) {
+        require(index < myArray.length, "Index out of range");
+        return myArray[index];
+    }
+}
+
+
+Explanation of each line of code:
+
+--> // SPDX-License-Identifier: MIT: This is a comment specifying the license under which the code is released (MIT License).
+
+--> pragma solidity ^0.8.0;: This line specifies the Solidity compiler version. It indicates compatibility with compiler versions up to 0.8.0.
+
+--> contract ArrayExample {: This line marks the beginning of the ArrayExample smart contract.
+
+--> uint256[] public myArray;: This line declares a public state variable named myArray. It's an array of uint256. Public state variables automatically generate a getter function to access their values from outside the contract.
+
+--> constructor() {: Here, we define the constructor function. The constructor is executed only once when the contract is deployed.
+
+--> myArray.push(42);: Inside the constructor, we add an initial value of 42 to the myArray when the contract is deployed.
+
+--> function addValue(uint256 _value) public {: This line defines a public function named addValue. It allows you to add a value to the myArray.
+
+--> myArray.push(_value);: Inside the addValue function, we use the push function to add _value to the myArray.
+
+--> function getArrayLength() public view returns (uint256) {: This line defines a public function named getArrayLength. It allows you to retrieve the length of the myArray without modifying the contract state (view).
+
+--> return myArray.length;: Inside the getArrayLength function, we return the length of myArray.
+
+--> function getValueAtIndex(uint256 index) public view returns (uint256) {: This line defines a public function named getValueAtIndex. It allows you to retrieve a value at a specified index in myArray without modifying the contract state (view).
+
+--> require(index < myArray.length, "Index out of range");: This line checks if the specified index is within the valid range of the array to avoid index out-of-bounds errors.
+
+--> return myArray[index];: Inside the getValueAtIndex function, we return the value at the specified index.
+
+
+Practical Number 10:
+Creating a for loop on the blockchain using Solidity and deploying it as contract on the Ethereum blockchain using Remix
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract LoopExamplevalues {
+    uint256[] public values;
+
+    constructor() {
+        values = new uint256[](0);
+    }
+
+    function initializeArray(uint256[] memory initialData) public {
+        values = initialData;
+    }
+
+    function incrementArray() public {
+        for (uint256 i = 0; i < values.length; i++) {
+            values[i] = values[i] + 1;
+        }
+    }
+
+    function getValues() public view returns (uint256[] memory) {
+        return values;
+    }
+}
+Explanation of each line of code:
+
+--> // SPDX-License-Identifier: MIT: A comment specifying the license under which the code is released (MIT License).
+
+--> pragma solidity ^0.8.0;: Specifies the Solidity compiler version, indicating compatibility with versions up to 0.8.0.
+
+--> contract LoopExample {: Marks the beginning of the LoopExample smart contract.
+
+--> uint256[] public values;: Declares a public state variable named values. This dynamic array will store a list of numbers.
+
+--> constructor() { ... }: Defines the constructor function. In this constructor, we initialize the values array as an empty array.
+
+--> function initializeArray(uint256[] memory initialData) public { ... }: Defines a public function named initializeArray that allows you to set the initial data for the values array.
+
+--> values = initialData;: Inside the initializeArray function, we set the values array to the provided initialData.
+
+--> function incrementArray() public { ... }: Defines a public function named incrementArray that increments each element in the values array.
+
+--> for (uint256 i = 0; i < values.length; i++) { ... }: Starts a for loop with a loop variable i initialized to 0. The loop continues as long as i is less than the length of the values array, and i is incremented by 1 in each iteration.
+
+--> values[i] = values[i] + 1;: Inside the loop, it increments the value at the current index i in the values array by 1.
+
+
+
+
+
+
+Practical Number 11:
+Creating Struct on the blockchain using Solidity and deploying it as contract on the Ethereum blockchain using Remix
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract EmployeeRegistrymul {
+    struct Employee {
+        string name;
+        uint256 salary;
+    }
+
+    mapping(address => Employee) public employees;
+
+    function addEmployee(address _address, string memory _name, uint256 _salary) public {
+        require(_address != address(0), "Invalid address");
+        employees[_address] = Employee(_name, _salary);
+    }
+
+    function updateSalary(address _address, uint256 _newSalary) public {
+        require(_address != address(0), "Invalid address");
+        Employee storage employee = employees[_address];
+        employee.salary = _newSalary;
+    }
+
+    function getEmployeeSalary(address _address) public view returns (uint256) {
+        require(_address != address(0), "Invalid address");
+        return employees[_address].salary;
+    }
+}
+
+
+
+note:  Call addEmployee("0x1234567890123456789012345678901234567890", "Alice", 50000);
+
+
+
+1. `0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE`
+2. `0x742d35Cc6634C0532925a3b844Bc454e4438f44e`
+3. `0x7A7c34B198262d17161e7C8b2a874f27208FE8e0`
+4. `0x5B38Da6a701c568545dCfcB03FcB875f56beddC4`
+5. `0xfA3caEd87700aE8780D82b98480c5b281D45eF4B`
+6. `0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2`
+7. `0x742d35Cc6634C0532925a3b844Bc454e4438f44e`
+8. `0xf358a35d9031A44F196856B4D657Ff9cDc3f76CE`
+9. `0x742d35Cc6634C0532925a3b844Bc454e4438f44e`
+10. `0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2`
+
+You can use these addresses in Remix for testing purposes. 
+
+
+Practical Number 12:
+Create a Solidity smart contract that utilizes a mapping functionality and deploy it as a contract on the Ethereum blockchain using Remix
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MappingExample {
+    mapping(address => uint256) public balances;
+
+    constructor() {
+        balances[msg.sender] = 1000;
+    }
+
+    function setBalance(address _address, uint256 _balance) public {
+        balances[_address] = _balance;
+    }
+
+    function getBalance(address _address) public view returns (uint256) {
+        return balances[_address];
+    }
+}
+
+
+Explanation of each line of code:
+
+--> // SPDX-License-Identifier: MIT: This is a comment specifying the license under which the code is released (MIT License).
+
+--> pragma solidity ^0.8.0;: This line specifies the Solidity compiler version. It indicates compatibility with compiler versions up to 0.8.0.
+
+--> contract MappingExample {: This line marks the beginning of the MappingExample smart contract.
+
+--> mapping(address => uint256) public balances;: This line declares a public state variable named balances. It's a mapping that associates Ethereum addresses with unsigned integer values (uint256). Public state variables automatically generate a getter function to access their values from outside the contract.
+
+--> constructor() {: Here, we define the constructor function. The constructor is executed only once when the contract is deployed.
+
+--> balances[msg.sender] = 1000;: Inside the constructor, we initialize the balances mapping by setting the balance of the contract's deployer (the msg.sender) to 1000 tokens.
+
+--> function setBalance(address _address, uint256 _balance) public {: This line defines a public function named setBalance. It allows you to set the balance associated with a given Ethereum address.
+
+--> balances[_address] = _balance;: Inside the setBalance function, we use the balances mapping to set the balance for the specified address.
+
+--> function getBalance(address _address) public view returns (uint256) {: This line defines a public function named getBalance. It allows you to retrieve the balance associated with a given Ethereum address without modifying the contract state (view).
+
+--> return balances[_address];: Inside the getBalance function, we use the balances mapping to return the balance for the specified address.
